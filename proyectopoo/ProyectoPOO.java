@@ -26,8 +26,7 @@ public class ProyectoPOO extends JFrame {
         Variable    Tipo        Usos
         libros      Libro       Almacena los n objetos de tipo Libro.        
         */
-        
-        
+                
         for(int i=0;i<libros.length;i++)
             libros[i] = new Libro();
                
