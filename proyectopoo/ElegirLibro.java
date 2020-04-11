@@ -11,8 +11,8 @@ import java.awt.*;
  *
  * @author rcgr
  */
-public class ElegirEditorial extends JFrame {
-    public ElegirEditorial()
+public class ElegirLibro extends JFrame{
+    public ElegirLibro()
     {
         /*
         Variable        Tipo            Uso
@@ -31,15 +31,15 @@ public class ElegirEditorial extends JFrame {
         
         ButtonGroup bgEditoriales = new ButtonGroup();
                 
-        for(int i=0; i<ProyectoPOO.editoriales.length;i++)
+        for(int i=0; i<ProyectoPOO.libros.length;i++)
         {
-            if(ProyectoPOO.editoriales[i].get_disponible())
-                rdbEditoriales[i] = new JRadioButton("No existe");
+            if(ProyectoPOO.libros[i].get_disponible())
+                rdbLibros[i] = new JRadioButton("No existe");
             else
-                rdbEditoriales[i] = new JRadioButton(ProyectoPOO.editoriales[i].get_nombre());    
+                rdbLibros[i] = new JRadioButton(ProyectoPOO.libros[i].get_titulo());    
             
-            bgEditoriales.add(rdbEditoriales[i]);
-            p1.add(rdbEditoriales[i]);
+            bgEditoriales.add(rdbLibros[i]);
+            p1.add(rdbLibros[i]);
         }
         
         JButton btnCambiar = new JButton("Cambiar");
@@ -66,10 +66,10 @@ public class ElegirEditorial extends JFrame {
         i               int         Sirve como contador interno para el ciclo
                                     for.
         */
-        for(int i=0; i<ProyectoPOO.editoriales.length;i++)
+        for(int i=0; i<ProyectoPOO.libros.length;i++)
         {
-            if(rdbEditoriales[i].isSelected() && !ProyectoPOO.editoriales[i].get_disponible())
-                new CambiarEditorial(ProyectoPOO.editoriales[i]);
+            if(rdbLibros[i].isSelected() && !ProyectoPOO.libros[i].get_disponible())
+                new CambiarLibro(i);
         }
         this.setVisible(false);
     }
@@ -78,6 +78,6 @@ public class ElegirEditorial extends JFrame {
     rdbAutores[]    JRadioButton    Son los botones para seleccionar al 
                                     autor.
     */
-    private JRadioButton rdbEditoriales[] = new JRadioButton[ProyectoPOO.editoriales.length];
+    private JRadioButton rdbLibros[] = new JRadioButton[ProyectoPOO.libros.length];
     
 }

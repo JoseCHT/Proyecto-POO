@@ -60,8 +60,8 @@ public class AgregarLibro extends JFrame{
         for(int i=0;i<anio.length;i++)
             anio[i]=Integer.toString(2020-i);
         
-        JLabel lbNombre = new JLabel("Nombre");
-        JTextField txtNombre = new JTextField("");
+        JLabel lbTitulo = new JLabel("Titulo");
+        JTextField txtTitulo = new JTextField("");
         JLabel lbAutor = new JLabel("Autor");
         JComboBox cbAutor = new JComboBox(nombresAutores);
         JLabel lbEditorial = new JLabel("Editorial");
@@ -73,7 +73,7 @@ public class AgregarLibro extends JFrame{
                 
         btnAgregar.addActionListener(new java.awt.event.ActionListener(){
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(txtNombre.getText(),cbAutor.getSelectedIndex(),cbEditorial.getSelectedIndex(), cbDia.getSelectedIndex(), cbMes.getSelectedIndex(), cbAnio.getSelectedIndex());
+                btnAgregarActionPerformed(txtTitulo.getText(),cbAutor.getSelectedIndex(),cbEditorial.getSelectedIndex(), cbDia.getSelectedIndex()+1, cbMes.getSelectedIndex(), 2020-cbAnio.getSelectedIndex());
             }
         });
                 
@@ -83,8 +83,8 @@ public class AgregarLibro extends JFrame{
             }
         });
         
-        p1.add(lbNombre);
-        p1.add(txtNombre);
+        p1.add(lbTitulo);
+        p1.add(txtTitulo);
         p1.add(lbAutor);
         p1.add(cbAutor);
         p1.add(lbEditorial);
@@ -130,9 +130,9 @@ public class AgregarLibro extends JFrame{
         try
         {
             int i=0;
-            boolean confirmar = false;
+            boolean confirmar = true;
             
-            while(!confirmar)
+            while(confirmar)
             {   
                 if(ProyectoPOO.libros[i].get_disponible())
                 {
@@ -141,7 +141,7 @@ public class AgregarLibro extends JFrame{
                     ProyectoPOO.libros[i].put_editorial(ProyectoPOO.editoriales[i_editorial]);
                     ProyectoPOO.libros[i].put_publicacion(dia, mes, anio);
                     ProyectoPOO.libros[i].put_disponible(false);
-                    confirmar = true;
+                    confirmar = false;
                 }
                 else
                 {

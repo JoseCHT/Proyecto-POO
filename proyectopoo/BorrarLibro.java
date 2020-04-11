@@ -11,8 +11,8 @@ import java.awt.*;
  *
  * @author rcgr
  */
-public class BorrarEditorial extends JFrame{
-    public BorrarEditorial()
+public class BorrarLibro extends JFrame {
+    public BorrarLibro()
     {
         /*
         Variable        Tipo        Uso
@@ -28,14 +28,14 @@ public class BorrarEditorial extends JFrame{
         JButton btnBorrar = new JButton("Borrar");
         JButton btnRegresar = new JButton("Regresar");
         
-        for(int i=0;i<ProyectoPOO.editoriales.length;i++)
+        for(int i=0;i<ProyectoPOO.libros.length;i++)
         {
-            if(ProyectoPOO.editoriales[i].get_disponible())
-                cbEditorial[i] = new JCheckBox("No existe");
+            if(ProyectoPOO.libros[i].get_disponible())
+                cbLibros[i] = new JCheckBox("No existe");
             else
-                cbEditorial[i] = new JCheckBox(ProyectoPOO.editoriales[i].get_nombre());    
+                cbLibros[i] = new JCheckBox(ProyectoPOO.libros[i].get_titulo());    
             
-            p1.add(cbEditorial[i]);
+            p1.add(cbLibros[i]);
         }
         
         btnBorrar.addActionListener(new java.awt.event.ActionListener(){
@@ -64,11 +64,13 @@ public class BorrarEditorial extends JFrame{
     {
         for(int i=0;i<ProyectoPOO.editoriales.length;i++)
         {
-            if(cbEditorial[i].isSelected())
+            if(cbLibros[i].isSelected())
             {
-                ProyectoPOO.editoriales[i].put_nombre("");
-                ProyectoPOO.editoriales[i].put_lugar("");
-                ProyectoPOO.editoriales[i].put_disponible(true);
+                ProyectoPOO.libros[i].put_titulo("");
+                ProyectoPOO.libros[i].put_publicacion(1,0,1);
+                ProyectoPOO.libros[i].put_editorial(new Editorial());
+                ProyectoPOO.libros[i].put_autor(new Autor());
+                ProyectoPOO.libros[i].put_disponible(true);
             }
         }
         
@@ -82,5 +84,5 @@ public class BorrarEditorial extends JFrame{
         this.setVisible(false);
     }
     
-    private JCheckBox cbEditorial[] = new JCheckBox[ProyectoPOO.editoriales.length];    
+    private JCheckBox cbLibros[] = new JCheckBox[ProyectoPOO.libros.length];    
 }

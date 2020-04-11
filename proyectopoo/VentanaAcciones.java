@@ -107,10 +107,10 @@ public class VentanaAcciones extends JFrame {
                 new BorrarAutor();                
                 break;
             
-            //case 2:
-                //this.setVisible(false);
-                //new BorrarLibro();
-                //break;
+            case 2:
+                this.setVisible(false);
+                new BorrarLibro();
+                break;
         }
     }
     
@@ -128,9 +128,10 @@ public class VentanaAcciones extends JFrame {
                 new ElegirAutor();                
                 break;
             
-            //case 2:
-                //new AgregarLibro();
-                //break;
+            case 2:
+                this.setVisible(false);
+                new ElegirLibro();
+                break;
         }
     }       
     

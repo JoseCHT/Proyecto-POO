@@ -5,7 +5,6 @@
  */
 package proyectopoo;
 import java.util.*;
-import java.text.*;
 
 /**
  *
@@ -21,7 +20,7 @@ public class Libro {
     autor       Autor       Almacena al autor que publico el libro.
     */
     private String titulo="";
-    private Calendar publicacion;
+    private Calendar publicacion = Calendar.getInstance();
     private Editorial editorial;
     private Autor autor;
     private boolean disponible=true;
