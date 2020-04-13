@@ -7,16 +7,20 @@ package proyectopoo;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- *
- * @author rcgr
- */
 public class BorrarEditorial extends JFrame{
     public BorrarEditorial()
     {
         /*
-        Variable        Tipo        Uso
-        
+        Variable        Tipo            Uso
+        btnBorrar       JButton         Es el botón que termina la función una 
+                                        vez seleccionados los autores.
+        btnRegresar     JButton         Botón que cancela la acción y devuelve el 
+                                        menú principal. 
+        p1              JPanel          Es uno de los contenedores de los elementos.
+        p2              JPanel          Es uno de los contenedores de los elementos.
+        i               int             Conocer la posición de la editorial seleccionada. 
+        cbEditorial     JCheckBox       Opción que permite colocar un listado de las 
+                                        que se puede seleccionar por medio de cajas.
         */
         super("Proyecto 1.0");
         setLocationRelativeTo(null);

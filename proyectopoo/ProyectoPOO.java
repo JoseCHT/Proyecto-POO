@@ -7,10 +7,6 @@ package proyectopoo;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- *
- * @author rcgr
- */
 public class ProyectoPOO extends JFrame {
 
     /**
@@ -23,8 +19,10 @@ public class ProyectoPOO extends JFrame {
     public static void main(String[] args) {
     // TODO code application logic here
         /*
-        Variable    Tipo        Usos
-        libros      Libro       Almacena los n objetos de tipo Libro.        
+        Variable       Tipo         Usos
+        libros         Libro        Almacena los n objetos de tipo Libro.    
+        autores        Autor        Almacena los n objetos de tipo Autor. 
+        editoriales    Editorial    Almacena los n objetos de tipo Editorial.
         */
         
         
@@ -72,6 +70,7 @@ public class ProyectoPOO extends JFrame {
                 btnsActionPerformed(0);
             }
         });
+        btnEditoriales.setFont(new Font("Segoe UI Semibold",Font.ITALIC,16)); //Cambiar estilo
         
         JButton btnAutores = new JButton("Autores");
         /*
@@ -82,6 +81,7 @@ public class ProyectoPOO extends JFrame {
                 btnsActionPerformed(1);
             }
         });
+        btnAutores.setFont(new Font("Segoe UI Semibold",Font.ITALIC,16)); //Cambiar estilo
         
         JButton btnLibros = new JButton("Libros");
         /*
@@ -92,6 +92,7 @@ public class ProyectoPOO extends JFrame {
                 btnsActionPerformed(2);
             }
         });
+        btnLibros.setFont(new Font("Segoe UI Semibold",Font.ITALIC,16)); //Cambiar estilo
         
         JButton btnPersonas = new JButton("Personas");
         /*
@@ -102,8 +103,9 @@ public class ProyectoPOO extends JFrame {
                 btnsActionPerformed(3);
             }
         });
+        btnPersonas.setFont(new Font("Segoe UI Semibold",Font.ITALIC,16)); //Cambiar estilo
         
-        JButton btnPrestamos = new JButton("Prestamos");
+        JButton btnPrestamos = new JButton("Préstamos");
         /*
         Se agrega un ActionListener al boton btnPrestamos.
         */
@@ -112,6 +114,8 @@ public class ProyectoPOO extends JFrame {
                 btnsActionPerformed(4);
             }
         });
+        btnPrestamos.setFont(new Font("Segoe UI Semibold",Font.ITALIC,16));
+        
         /*
         Se agregan los componentes a cada panel.
         */
