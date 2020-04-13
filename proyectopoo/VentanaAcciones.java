@@ -7,10 +7,6 @@ package proyectopoo;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- *
- * @author rcgr
- */
 public class VentanaAcciones extends JFrame {
     public VentanaAcciones(int op)
     {
@@ -25,6 +21,7 @@ public class VentanaAcciones extends JFrame {
         btnCambios      JButton     Sirve como el boton para hacer cambios.
         btnRegresar     JButton     Sirve como el boton para regresar.
         p1              JPanel      Es el contenedor de los elementos.
+        op              int         Variable que define el objeto a trabajar.
         */
         super("Proyecto 1.0");
         setLocationRelativeTo(null);
