@@ -6,12 +6,18 @@
 package proyectopoo;
 import javax.swing.*;
 import java.awt.*;
+import java.io.*;
+import java.util.*;
 
-public class ProyectoPOO extends JFrame {
+public class ProyectoPOO extends JFrame{
 
     /**
      * @param args the command line arguments
      */
+        public static File fileLibros = new File("src/libros.txt");
+        public static File fileAutores = new File("src/autores.txt");
+        public static File fileEditoriales = new File("src/editoriales.txt");
+                
         public static Libro libros[] = new Libro[10];        
         public static Autor autores[] = new Autor[10];
         public static Editorial editoriales[] = new Editorial[10];
@@ -24,8 +30,7 @@ public class ProyectoPOO extends JFrame {
         autores        Autor        Almacena los n objetos de tipo Autor. 
         editoriales    Editorial    Almacena los n objetos de tipo Editorial.
         */
-        
-        
+              
         for(int i=0;i<libros.length;i++)
             libros[i] = new Libro();
                
@@ -34,9 +39,9 @@ public class ProyectoPOO extends JFrame {
         
         for(int i=0;i<editoriales.length;i++)
             editoriales[i] = new Editorial();
-        
+                        
         new ProyectoPOO();
-
+                       
     }
     
     public ProyectoPOO()
@@ -48,6 +53,8 @@ public class ProyectoPOO extends JFrame {
         btnLibros       JButton     Sirve como el boton de los Libros.
         btnPersonas     JButton     Sirve como el boton de las Personas.
         btnPrestamos    JButton     Sirve como el boton de los Prestamos.
+        btnGuardar      JButton     Sirve para guardar todos los datos en
+                                    archivos de texto.
         p1              JPanel      Es uno de los contenedores de los elementos.
         p2              JPanel      Es uno de los contenedores de los elementos.
         */
@@ -116,6 +123,18 @@ public class ProyectoPOO extends JFrame {
         });
         btnPrestamos.setFont(new Font("Segoe UI Semibold",Font.ITALIC,16));
         
+        
+        JButton btnGuardar = new JButton("Guardar");
+        /*
+        Se agrega un ActionListener al boton btnGuardar.
+        */
+        btnGuardar.addActionListener(new java.awt.event.ActionListener(){
+            public void actionPerformed(java.awt.event.ActionEvent evt5) {
+                btnGuardarActionPerformed();
+            }
+        });
+        btnGuardar.setFont(new Font("Segoe UI Semibold",Font.ITALIC,16));
+        
         /*
         Se agregan los componentes a cada panel.
         */
@@ -124,6 +143,7 @@ public class ProyectoPOO extends JFrame {
         p2.add(btnLibros);
         p2.add(btnPersonas);
         p2.add(btnPrestamos);
+        p2.add(btnGuardar);
         /*
         Y los paneles se agregan a la ventana ProyectoPOO.
         */
@@ -142,5 +162,51 @@ public class ProyectoPOO extends JFrame {
         */
         new VentanaAcciones(op);
         this.setVisible(false);
+    }
+    
+    private void btnGuardarActionPerformed()
+    {
+        /*
+        Esta es la accion que se lleva acabo cuando se decide guardar
+        */
+        try
+        {   
+            FileWriter wLibros = new FileWriter(fileLibros);
+            FileWriter wAutores = new FileWriter(fileAutores);
+            FileWriter wEditoriales = new FileWriter(fileEditoriales);
+            
+            for(int i=0;i<libros.length;i++)
+            {
+                if(libros[i].get_titulo()!="")
+                    wLibros.write(i+"$"+libros[i].get_titulo()+
+                                "$"+libros[i].get_editorial().get_nombre()+
+                                "$"+libros[i].get_autor().get_nombre()+
+                                "$"+libros[i].get_publicacion().get(Calendar.DAY_OF_MONTH)+
+                                "$"+libros[i].get_publicacion().get(Calendar.MONTH)+
+                                "$"+libros[i].get_publicacion().get(Calendar.YEAR)+"\n");
+            }
+            
+            for(int i=0;i<autores.length;i++)
+            {
+                if(autores[i].get_nombre()!="")
+                    wAutores.write(i+"$"+autores[i].get_nombre()+"\n");
+            }
+            
+            for(int i=0;i<editoriales.length;i++)
+            {
+                if(editoriales[i].get_nombre()!="")
+                    wEditoriales.write(i+"$"+editoriales[i].get_nombre()+
+                            "$"+editoriales[i].get_lugar()+"\n");
+            }
+            
+            wLibros.close();
+            wAutores.close();
+            wEditoriales.close();
+        } catch(IOException e){
+            System.out.println("ERROR");
+            e.printStackTrace();
+        }
+        
+        JOptionPane.showMessageDialog(this,"Se ha guardado exitosamente.");
     }
 }

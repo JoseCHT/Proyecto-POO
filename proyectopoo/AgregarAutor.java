@@ -6,6 +6,7 @@
 package proyectopoo;
 import javax.swing.*;
 import java.awt.*;
+import java.io.*;
 
 /**
  *
@@ -81,15 +82,13 @@ public class AgregarAutor extends JFrame {
             while(!confirmar)
             {   
                 if(ProyectoPOO.autores[i].get_disponible())
-                {
+                {                            
                     ProyectoPOO.autores[i].put_nombre(nombre);
                     ProyectoPOO.autores[i].put_disponible(false);
                     confirmar = true;
                 }
                 else
-                {
                     i++;
-                }
                 
             }
         }
