@@ -82,27 +82,39 @@ public class AgregarEditorial extends JFrame{
         i               int         Saber en que posicion del arreglo 
                                     ProyectoPOO.autores[] va dentro del ciclo.
         confirmar       boolean     Saber si ya se asigno el nombre o no.
+        verificado      boolean     Sirve para verificar que el nombre no tenga 
+                                    un simbolo '$'.
         */
         try
         {
             int i=0;
-            boolean confirmar = false;
+            boolean confirmar = true, verificado = true;
             
-            while(!confirmar)
-            {   
-                if(ProyectoPOO.editoriales[i].get_disponible())
-                {
-                    ProyectoPOO.editoriales[i].put_nombre(in_nombre);
-                    ProyectoPOO.editoriales[i].put_lugar(in_lugar);
-                    ProyectoPOO.editoriales[i].put_disponible(false);
-                    confirmar = true;
+            for(int j=0;j<in_nombre.length();j++)
+                if(in_nombre.charAt(j)=='$')
+                    verificado = false;
+            
+            for(int j=0;j<in_lugar.length();j++)
+                if(in_lugar.charAt(j)=='$')
+                    verificado = false;
+            
+            if(verificado)
+            {
+                while(confirmar)
+                {   
+                    if(ProyectoPOO.editoriales[i].get_disponible())
+                    {
+                        ProyectoPOO.editoriales[i].put_nombre(in_nombre);
+                        ProyectoPOO.editoriales[i].put_lugar(in_lugar);
+                        ProyectoPOO.editoriales[i].put_disponible(false);
+                        confirmar = false;
+                    }
+                    else
+                        i++;
                 }
-                else
-                {
-                    i++;
-                }
-                
             }
+            else                
+                JOptionPane.showMessageDialog(this, "El nombre o el lugar contienen un caracter no valido.");
         }
         catch(ArrayIndexOutOfBoundsException e)
         {

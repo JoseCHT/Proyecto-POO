@@ -130,25 +130,31 @@ public class AgregarLibro extends JFrame{
         try
         {
             int i=0;
-            boolean confirmar = true;
+            boolean confirmar = true, verificado = true;
             
-            while(confirmar)
-            {   
-                if(ProyectoPOO.libros[i].get_disponible())
-                {
-                    ProyectoPOO.libros[i].put_titulo(in_titulo);
-                    ProyectoPOO.libros[i].put_autor(ProyectoPOO.autores[i_autor]);
-                    ProyectoPOO.libros[i].put_editorial(ProyectoPOO.editoriales[i_editorial]);
-                    ProyectoPOO.libros[i].put_publicacion(dia, mes, anio);
-                    ProyectoPOO.libros[i].put_disponible(false);
-                    confirmar = false;
+            for(int j=0;j<in_titulo.length();j++)
+                if(in_titulo.charAt(j)=='$')
+                    verificado = false;
+            
+            if(verificado)
+            {
+                while(confirmar)
+                {   
+                    if(ProyectoPOO.libros[i].get_disponible())
+                    {
+                        ProyectoPOO.libros[i].put_titulo(in_titulo);
+                        ProyectoPOO.libros[i].put_autor(ProyectoPOO.autores[i_autor]);
+                        ProyectoPOO.libros[i].put_editorial(ProyectoPOO.editoriales[i_editorial]);
+                        ProyectoPOO.libros[i].put_publicacion(dia, mes, anio);
+                        ProyectoPOO.libros[i].put_disponible(false);
+                        confirmar = false;
+                    }
+                    else
+                        i++;
                 }
-                else
-                {
-                    i++;
-                }
-                
             }
+            else
+                JOptionPane.showMessageDialog(this, "El titulo contiene un caracter no valido.");
         }
         catch(ArrayIndexOutOfBoundsException e)
         {

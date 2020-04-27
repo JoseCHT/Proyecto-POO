@@ -64,7 +64,7 @@ public class AgregarAutor extends JFrame {
         
     }
     
-    private void btnAgregarActionPerformed(String nombre)
+    private void btnAgregarActionPerformed(String in_nombre)
     {
         /*
         Variable        Tipo        Uso
@@ -73,24 +73,34 @@ public class AgregarAutor extends JFrame {
         i               int         Saber en que posicion del arreglo 
                                     ProyectoPOO.autores[] va dentro del ciclo.
         confirmar       boolean     Saber si ya se asigno el nombre o no.
+        verificado      boolean     Sirve para verificar que el nombre no tenga 
+                                    un simbolo '$'.
         */
         try
         {
             int i=0;
-            boolean confirmar = false;
+            boolean confirmar = true, verificado = true;
             
-            while(!confirmar)
-            {   
-                if(ProyectoPOO.autores[i].get_disponible())
-                {                            
-                    ProyectoPOO.autores[i].put_nombre(nombre);
-                    ProyectoPOO.autores[i].put_disponible(false);
-                    confirmar = true;
+            for(int j=0;j<in_nombre.length();j++)
+                if(in_nombre.charAt(j)=='$')
+                    verificado = false;
+            
+            if(verificado)
+            {
+                while(confirmar)
+                {   
+                    if(ProyectoPOO.autores[i].get_disponible())
+                    {    
+                        ProyectoPOO.autores[i].put_nombre(in_nombre);
+                        ProyectoPOO.autores[i].put_disponible(false);
+                        confirmar = false;
+                    }
+                    else
+                        i++;
                 }
-                else
-                    i++;
-                
             }
+            else
+                JOptionPane.showMessageDialog(this, "El nombre contiene un caracter no valido.");
         }
         catch(ArrayIndexOutOfBoundsException e)
         {
